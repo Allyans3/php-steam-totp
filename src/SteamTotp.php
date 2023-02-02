@@ -16,7 +16,7 @@ class SteamTotp {
      * @return string
      */
     public static function getAuthCode($shared_secret, $time_offset = 0) {
-        $hmac = hash_hmac('sha1', pack('NN', 0, floor((time() + $time_offset) / 30)), self::bufferizeSecret($shared_secret), true);
+        $hmac = hash_hmac('sha1', pack('NN', 0, floor((time() + $time_offset) / 30)), self::bufferizeSecret($shared_secret ?? ''), true);
         $start = unpack('c19trash/Cstart', $hmac);
         $start = $start['start'] & 0x0F;
 
@@ -25,7 +25,7 @@ class SteamTotp {
 
         $code = '';
         for ($i = 0; $i < self::CODE_LENGTH; $i++) {
-            $code .= substr(self::CHARSET, $fullcode % strlen(self::CHARSET), 1);
+            $code .= substr(self::CHARSET, (int) $fullcode % strlen(self::CHARSET), 1);
             $fullcode /= strlen(self::CHARSET);
         }
 
@@ -86,11 +86,11 @@ class SteamTotp {
     }
 
     private static function bufferizeSecret($secret) {
-        if (preg_match('/[0-9a-fA-F]{40}/', $secret)) {
+        if (preg_match('/[0-9a-fA-F]{40}/', $secret ?? '')) {
             return pack('H*', $secret);
         }
 
-        if (preg_match('/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/', $secret)) {
+        if (preg_match('/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/', $secret ?? '')) {
             return base64_decode($secret);
         }
 
