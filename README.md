@@ -1,5 +1,9 @@
 # php-steam-totp
 
+This forks removes deprecated warnings on PHP 8
+
+```composer require tankonyako/php-steam-totp```
+
 PHP library for TOTP for use with [Steam](http://steampowered.com). It's documented with phpdoc; just read it to learn
 how to use it.
 
