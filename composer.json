@@ -1,5 +1,5 @@
 {
-	"name": "doctormckay/steam-totp",
+	"name": "tankonyako/php-steam-totp",
 	"description": "PHP library to deal with Steam's proprietary TOTP algorithm",
 	"type": "library",
 	"license": "MIT",
