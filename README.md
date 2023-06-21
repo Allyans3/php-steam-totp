@@ -4,7 +4,7 @@ This forks removes deprecated warnings on PHP 8
 
 ```composer require allyans3/php-steam-totp```
 
-https://packagist.org/packages/tankonyako/php-steam-totp
+https://packagist.org/packages/allyans3/php-steam-totp
 
 PHP library for TOTP for use with [Steam](http://steampowered.com). It's documented with phpdoc; just read it to learn
 how to use it.
