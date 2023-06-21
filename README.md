@@ -2,7 +2,7 @@
 
 This forks removes deprecated warnings on PHP 8
 
-```composer require tankonyako/php-steam-totp```
+```composer require allyans3/php-steam-totp```
 
 https://packagist.org/packages/tankonyako/php-steam-totp
 
